@@ -1,0 +1,22 @@
+image: golang:1.14.0
+
+variables:
+  GOPRIVATE: "gitlab.3ag.xyz"
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - vendor/
+    - builds/
+  policy: pull-push
+
+stages:
+  - test
+
+run_unit_tests:
+  stage: test
+  before_script:
+    - go mod download
+    - go mod vendor
+  script:
+    - go test ./...
