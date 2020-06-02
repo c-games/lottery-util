@@ -1,4 +1,4 @@
-module github.com/c-games/ottery-util
+module github.com/c-games/lottery-util
 
 go 1.14
 
